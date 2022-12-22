@@ -30,18 +30,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    DateTime today = DateTime.now();
-    DateTime nextMon = today.add(
-      Duration(
-        days: (DateTime.monday - today.weekday) % DateTime.daysPerWeek,
-        hours: (24 - DateTime.now().hour),
-        minutes: (60 - DateTime.now().minute),
-        seconds: (60 - DateTime.now().second),
-      ),
-    );
-
     DateTime endDate = DateTime(2022, 12, 25);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("CountDown Timers"),
@@ -54,27 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //? tabular timer with short label
-              Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.deepPurpleAccent,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 5,
-                      ),
-                    ]),
-                child: CountDownText(
-                  due: endDate,
-                  finishedText: "done",
-                  style: const TextStyle(
-                      color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-
               //? tabular timer long label
               Container(
                 alignment: Alignment.center,
@@ -96,6 +64,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
+              //? tabular timer with short label
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.deepPurpleAccent,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 5,
+                      ),
+                    ]),
+                child: CountDownText(
+                  due: endDate,
+                  finishedText: "done",
+                  style: const TextStyle(
+                      color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+
 
               //? linear timer without labels
               Container(
